@@ -19,3 +19,33 @@ Executes a search. The q-parameter supports the elasticsearch query string "mini
 * `RequestParameter: editorfields` _optional_, boolean: If the editor fields should be searched and highlighted, too (user must at least have editor rights for this to take effect). The default value is `true`.
 
 
+# Features and URLs
+
+Only the unique parts of the URLs specific to a feature will be used to identify the functionality. The complete URLs are of the form http://$some_server.$some_domain/$servlet_name/$feature_specific_part.
+All requests will return JSON.
+All POST/PUT requests expect JSON.
+All requests support HTTP basic auth, for some it is mandatory (mostly admin tasks).
+
+## Data retrieval
+
+`GET /entity/$entityId``
+
+`RequestParameter: live` *optional* (default: `false`)
+
+* **$entityId** long Unique ArachneID of the entity
+* **live** boolean If `true` the data will be fetched from the database else it will be fetched from elasticsearch.
+
+Retrieves a single formatted entity.
+
+`GET /entity/$category/$categoryId`
+
+`RequestParameter: live` *optional* (default: `false`)
+
+* **$category** string Name of a category (e.g. bauwerk)
+* **$categoryId** long Internal ID of the entity
+
+* **live** boolean If `true` the data will be fetched from the database else it will be fetched from elasticsearch.
+
+Retrieves a single formatted entity (same as above).
+
+## Search
